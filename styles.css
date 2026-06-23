@@ -1,0 +1,324 @@
+/* =========================================
+   DECODELABS: 2025 AESTHETICS & TOKENS
+   ========================================= */
+:root {
+  /* Core Palette [cite: 106, 107, 108] */
+  --mocha-mousse: #a5856f; /* Stability */
+  --ethereal-blue: #a0d4e0; /* Trust */
+  --moonlit-grey: #f2f0ea; /* Refinement / Base Background */
+  --dark-slate: #2b303a; /* Text Contrast */
+  --white: #ffffff;
+
+  /* Typography Pairings  */
+  --font-headline: "Inter", sans-serif;
+  --font-body: "Open Sans", sans-serif;
+}
+
+/* =========================================
+   BASE RESETS & SEMANTIC HTML5 [cite: 127]
+   ========================================= */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--moonlit-grey);
+  color: var(--dark-slate);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Fluid Typography  */
+h1,
+h2,
+h3 {
+  font-family: var(--font-headline);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+h2 {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+}
+h3 {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+}
+p {
+  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+}
+
+/* =========================================
+   MICRO COMPONENTS (FLEXBOX) [cite: 141]
+   ========================================= */
+
+/* Header & Nav */
+.main-header {
+  background-color: var(--white);
+  border-bottom: 4px solid var(--ethereal-blue);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--font-headline);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--mocha-mousse);
+}
+
+.nav-container {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: var(--dark-slate);
+  font-family: var(--font-headline);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--mocha-mousse);
+}
+
+/* Mobile Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--dark-slate);
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: var(--white);
+  text-align: center;
+  padding: clamp(40px, 8vw, 80px) 20px;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  max-width: 600px;
+  margin: 10px auto 20px auto;
+}
+
+.btn-primary {
+  background-color: var(--ethereal-blue);
+  color: var(--dark-slate);
+  border: none;
+  padding: 12px 30px;
+  margin: 20px; /* Specific margin requirement [cite: 50] */
+  font-family: var(--font-headline);
+  font-weight: 700;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: var(--mocha-mousse);
+  color: var(--white);
+}
+
+/* =========================================
+   MACRO LAYOUT: MOBILE-FIRST [cite: 149]
+   ========================================= */
+.page-layout {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  /* 1. Start with a single column  */
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  transition: all 0.5s ease-in-out;
+}
+
+.sidebar {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: 8px;
+  border-top: 4px solid var(--mocha-mousse);
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.sidebar li {
+  margin-bottom: 12px;
+}
+
+.sidebar strong {
+  color: var(--mocha-mousse);
+  margin-right: 8px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  transition: grid-template-columns 0.5s ease-in-out;
+}
+
+.card {
+  background-color: var(--white);
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+.icon-placeholder {
+  width: 24px; /* Strict dimension requirement [cite: 42] */
+  height: 24px;
+  background-color: var(--ethereal-blue);
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* =========================================
+   MAIN SECTIONS (ONE-PAGE LAYOUT)
+   ========================================= */
+.main-section {
+  padding: clamp(40px, 8vw, 80px) 20px;
+  background-color: var(--moonlit-grey);
+  flex: 1;
+}
+
+.main-section.alternate {
+  background-color: var(--white);
+}
+
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-container h2 {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid var(--ethereal-blue);
+}
+
+.main-footer {
+  background-color: var(--dark-slate);
+  color: var(--white);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* =========================================
+   ADAPTIVE BREAKPOINTS [cite: 151]
+   ========================================= */
+
+/* Mobile: 0px to 767px [cite: 152] */
+@media (max-width: 767px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--white);
+    border-bottom: 4px solid var(--ethereal-blue);
+    padding: 20px;
+    gap: 10px;
+    display: none;
+  }
+
+  .nav-container.active {
+    display: flex;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--moonlit-grey);
+  }
+
+  .nav-link:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .content-grid {
+    grid-template-columns: repeat(2, 1fr);
+    transition: grid-template-columns 0.5s ease-in-out;
+  }
+}
+
+/* Desktop: 1024px [cite: 152] - CSS Grid Macro Layout [cite: 139] */
+@media (min-width: 1024px) {
+  .page-layout {
+    /* Apply strict 2D floor-plan to the main wrapper [cite: 140] */
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    grid-template-areas: "sidebar content";
+    align-items: start;
+    padding: 20px;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
+    border-top: none;
+    border-left: 4px solid var(--mocha-mousse);
+    border-radius: 0; /* Boxy aesthetic for the side-panel */
+    min-height: 100%;
+    transition: all 0.5s ease-in-out;
+  }
+
+  .content-grid {
+    grid-area: content;
+    grid-template-columns: repeat(3, 1fr);
+    transition: grid-template-columns 0.5s ease-in-out;
+  }
+}
